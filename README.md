@@ -18,3 +18,4 @@ Flow of the project:
 4. On refreshing, you can see new uploaded image at first place, and other two images shifting forward. To show the images, I am storing those URLs in MongoDB Databse.
 5. Those stored images are getting displayed here and I have set query limit to three as we want to see only three latest images. 
 
+Video Presentation: https://youtu.be/9UhzClMT_M4
