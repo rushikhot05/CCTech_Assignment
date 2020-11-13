@@ -5,7 +5,7 @@ import PublishIcon from "@material-ui/icons/Publish";
 const Upload = () => {
     const [photo, setPhoto] = useState("");
     const [url, setUrl] = useState("");
-    const [title, setTitle] = useState("");
+    // const [title, setTitle] = useState("");
 
     useEffect(() => {
         if(url){
@@ -17,7 +17,7 @@ const Upload = () => {
                 },
                 body:JSON.stringify({
                     photo:url,
-                    title
+                    // title
                 })
             }).then(res => res.json())
             .then(data => {
@@ -36,7 +36,7 @@ const Upload = () => {
     const postDetails = () => {
         const data = new FormData()
         data.append("file", photo)
-        data.append("upload_preset", "youframe")
+        data.append("upload_preset", "m1dde7qg")
         data.append("cloud_name", "eventsbook")
         fetch("https://api.cloudinary.com/v1_1/eventsbook/image/upload", {
             method: "post",
@@ -50,23 +50,23 @@ const Upload = () => {
 
     return (
         <div>
-            <input type="file" id="actual-btn" hidden onClick = {() =>postDetails()}  onChange = {(e) => setPhoto(e.target.files[0])}/>
+            {/* <input type="file" id="actual-btn" hidden onClick = {() =>postDetails()}  onChange = {(e) => setPhoto(e.target.files[0])}/>
             <label htmlFor="actual-btn" style={{backgroundColor:"white", color:"black", padding:"0.5rem", fontFamily:"Verdana", borderRadius:"0.3rem", cursor:"pointer", marginTop:"1rem"}}>
                 <PublishIcon style={{padding:"-1.5rem"}}/>
                 Upload
-            </label>
+            </label> */}
 
 
 
 
-            {/* <button onClick= {() => postDetails()} style={{fontFamily:"Verdana"}}>
-                <input type = "file" onClick = {() =>postDetails()}  onChange = {(e) => setPhoto(e.target.files[0])}/>
+            <button onClick= {() => postDetails()} style={{fontFamily:"Verdana", paddingTop:"5px"}}>
+                <input type = "file" onChange = {(e) => setPhoto(e.target.files[0])}/>
                 <span>
                     <svg src="./upload.svg" style={{display:"inline-block", height:"10px", width:"10px"}}></svg>
                 </span>
-                <span onClick= {() => postDetails()} style={{fontFamily:"Verdana"}}>Upload</span>
+                {/* <span onClick= {() => postDetails()} style={{fontFamily:"Verdana"}}></span> */}
                 Upload
-            </button> */}
+            </button>
         </div>
     )
 

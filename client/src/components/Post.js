@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Grid } from '@material-ui/core';
+import React, { useState, useEffect } from "react";
+import { GridList, GridListTile, GridListTileBar, Card } from "@material-ui/core"
 
-const Post = () => {
+
+const Post = (props) => {
     const [data, setData] = useState([])
 
     useEffect(() => {
@@ -16,28 +17,28 @@ const Post = () => {
         })
     }, [])
 
+   
+    
     return (
-        <div>
-            <div>
-                <Grid container direction="row" justify="center" alignItems="center">
-                    {[1,2,3].map(item => (
-                        <Grid key={item} item>
-                            <img src={item.photo} alt={item.title} style={{maxWidth: "250px"}}/>
-                        </Grid>
-                    ))}
-                </Grid>
-            </div>
-        {/* // <div>
-        //     <Grid container direction="row" justify="center" alignItems="center">
-        //         {data.map(item => (
-        //             <Grid key = {item} item>
-        //                 <img src={item.photo} style={{maxWidth: "250px"}}/>
-        //             <Grid/>
-        //         ))}
-        //     </Grid>
-        // </div>
-        <div> */}
-
+        <div className="root">
+            <GridList spacing={10} cellHeight={"auto"} cols={3} style={{paddingLeft:"50px", paddingTop:"100px", paddingRight:"50px", paddingBottom:"100px"}}>
+            {
+                data.map((item, i) => {
+                    return (
+                        <GridListTile key={item} style={{padding:"5px", }}>
+                            {/* <Card style={{display:"center", maxHeight: "200px", maxWidth:"250px", borderRadius:"10px"}}> */}
+                                <div key={i}>
+                                    <img src={item.photo} alt="Image" id="image-{i}.jpg" style={{display:"center", maxHeight: "400px", maxWidth:"500px", height:"auto", width:"auto", borderRadius:"10px",  boxShadow:"2.5px 5px grey"}}></img>
+                                </div>
+                            {/* </Card> */}
+                            <div >
+                                <p key={i}>image-{i+1}</p>
+                            </div>
+                        </GridListTile>           
+                    )
+                })
+            }
+            </GridList>
         </div>
     )
 }

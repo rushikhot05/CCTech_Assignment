@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require("../models/post");
 
 router.get('/allpost', (req, res) => {
-    Post.find()
+    Post.find().limit(3)
     .sort('-createdAt')
     .then((posts) => {
         res.json({posts})
@@ -13,10 +13,10 @@ router.get('/allpost', (req, res) => {
 });
 
 router.post('/createpost', (req, res) => {
-    const{ photo, title } = req.body
+    const{ photo } = req.body
     const post = new Post({
         photo: req.body.photo,
-        title: req.body.title
+        // title: req.body.title
     })
     post.save().then(result => {
         res.json({post:result})
